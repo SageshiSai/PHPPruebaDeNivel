@@ -2,8 +2,8 @@
     include 'procesar.php';
     include 'bista.php';
 
-    session_start();
-    session_create_id('hola');
+    session_start(  );
+    session_create_id( 'hola' );
 
     if(!isset($_SESSION['erab'])){
         $_SESSION['erab'] = "";
@@ -16,13 +16,6 @@
     }
     if(!isset($_POST['zerrenda'])){
         $_POST['zerrenda'] = "";
-    }
-
-    if((isset($_POST['erab']) || $_POST['erab'] != "") && (isset($_POST['ph']) || $_POST['ph'] != "")){
-
-        $_SESSION['erab'] = $_POST['erab'];
-        $_SESSION['ph'] = $_POST['ph'];
-
     }
     ?>
     <!DOCTYPE html>
@@ -41,26 +34,15 @@
         $erabiltzaileak_puntuazioak = [];
         if (isset($result)) {
             foreach ($result as $info) {
-                $erabiltzaileak_puntuazioak[$info['erabiltzailea']] = $info['puntuazio_max'];
+                $erabiltzaileak_puntuazioak[ $info[ 'erabiltzailea' ] ] = $info[ 'puntuazio_max' ];
             }
 
-            var_dump($erabiltzaileak_puntuazioak);
-            echo
         } 
         
 
 
         $loginBista = new Login_Bista();
-        if (!$login){
-            $loginBista->HasierakoFormularioa();
-        } else {
-            $loginBista->Aukera_Eman();
-            if(isset($_POST['zerrenda'])){
-                $loginBista->zerrendatu($erabiltzaileak_puntuazioak);
-                ?>
-        <?php
-            }
-        }
+        $loginBista->HasierakoFormularioa();
         ?>     
         </table>
     </body>

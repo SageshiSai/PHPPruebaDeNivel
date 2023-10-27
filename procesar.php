@@ -9,9 +9,13 @@ $database = "jokoa";
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Verificar conexión
+// Check connection
 if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+    // Log the error
+    error_log("Database connection failed: " . $conn->connect_error);
 
+    // Display a user-friendly error message
+    die("Oops! Something went wrong. Please try again later.");
+}
 ?>
+

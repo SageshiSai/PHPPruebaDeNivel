@@ -1,22 +1,5 @@
 <?php
-    include 'procesar.php';
-    include 'bista.php';
-
-    session_start(  );
-    session_create_id( 'hola' );
-
-    if(!isset($_SESSION['erab'])){
-        $_SESSION['erab'] = "";
-    }
-    if(!isset($_POST['erab'])){
-        $_POST['erab'] = "";
-    }
-    if(!isset($_POST['ph'])){
-        $_POST['ph'] = "";
-    }
-    if(!isset($_POST['zerrenda'])){
-        $_POST['zerrenda'] = "";
-    }
+include 'bista.php';
     ?>
     <!DOCTYPE html>
     <html lang="en">

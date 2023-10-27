@@ -1,34 +1,13 @@
 <?php
-function checkUser( $contrasena, $usuario ){
+include 'bista.php';
+include 'procesar.php';
+include 'functions.php';
 
-    global $conn;
-
-    $sql = "SELECT 
-            erabiltzailea, pasahitza
-            FROM
-            jokalariak
-            WHERE
-            erabiltzailea = '.$usuario.' AND pasahitza ='.$contrasena' ";
-
-    $resultado = mysqli_query( $conn, $sql );
-
-    $login = false;
-
-    while ( $result =mysqli_fetch_array( $resultado ) ) {
-
-        if ( $usuario == $result[ 'erabiltzailea' ] && $contrasena == $result[ 'pasahitza' ] ) {
-            
-            $_SESSION[ 'erab' ] = $usuario;
-            $_SESSION[ 'ph' ] = $contrasena;
-            $login = true;
-        }
+if(!isset($_SESSION[ 'erab' ])){
+    if( !checkUser($_POST[ 'ph' ], $_POST[ 'erab' ]  ) ){
+    header( "Location: index.php" );
     }
 }
-
-if( !checkUser( $_POST( 'erab' ), $_POST( 'ph' ) ) ){
-    header("Location: index.php");
-}
-
 ?>
 
 
@@ -38,6 +17,27 @@ if( !checkUser( $_POST( 'erab' ), $_POST( 'ph' ) ) ){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title> 
+    <?php
+    $loginBista = new Login_Bista();
+    if( !isset($_POST[ "opcion" ]) ) {
+        $loginBista->Aukera_Eman();
+    } else {
+        switch ($_POST[ 'opcion' ]) {
+            case 'zerrenda':
+                $select_puntuaciones = getPoints();
+                $loginBista->zerrendatu($select_puntuaciones);
+                $loginBista->Aukera_Eman();
+                break;
+                
+            case 'jokatu':
+                $select_puntuaciones = getQuestions();
+                $loginBista->galdera_erantzunak_marraztu();
+                $loginBista->Aukera_Eman();
+                break;
+        }
+    } 
+
+    ?>
 </head>
 <body>
     

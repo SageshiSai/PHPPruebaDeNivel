@@ -37,7 +37,7 @@ class Login_Bista {
     //Una vez que el login esté verificado, el fomulario sin la parte de login.
     public function Aukera_Eman() {
         ?>
-        <form method="POST" action="index.php">
+        <form method="POST" action="aukera_kontrolatzailea.php">
             <div>
                 <div>
                     <label><b>Zer da egin nahi duzuna?/ ¿Qué es lo que quieres hacer?</b></label> 
@@ -79,7 +79,7 @@ class Login_Bista {
       muestra en pantalla la preguntas y respuestas.     */
     public function galdera_erantzunak_marraztu ($galdera_erantzunen_arraya){
                 
-        echo '<form method="POST" action="index.php">';
+        echo '<form method="POST" action="aukera_kontrolatzaia.php">';
          // Galderaren etiketa sortu/ Crear la etiqueta de la pregunta
          $kont=0;
          foreach($galdera_erantzunen_arraya as $galdera => $erantzunak){
@@ -103,3 +103,4 @@ class Login_Bista {
 
 }
 
+?>

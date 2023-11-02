@@ -99,6 +99,22 @@ class Login_Bista {
        
     }
 
+    public function adminOptions() {
+        ?>
+        <form method="POST" action="aukera_kontrolatzailea.php">
+            <div>
+                <div>
+                    <label><b>Zer da egin nahi duzuna admin?/ ¿Qué es lo que quieres hacer admin?</b></label> 
+                </div>
+                <input type="radio" value="zerrenda" name="opcion"/>Dar de alta
+                <input type="radio" value="jokatu" name="opcion"/> Agregar Preguntas
+                <br>
+                <br>
+                <input type="submit" value="AURRERA" name="botoia"/>
+            </div>
+        </form>
+        <?php
+    }
 
 }
 

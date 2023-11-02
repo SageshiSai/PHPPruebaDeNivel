@@ -65,13 +65,36 @@
     }
 
     function findOutAnswer(){
-        
-        for( $num = 1; $num <= 2; $num++ ){
-            $respuestas = $_POST[ 'galdera'.$num];
-            if($respuestas == "Respuesta correcta"){
+        global $conn;
+        $puntos_sumar = 0;
+        $sql = "SELECT 
+                puntuazio_max as puntos
+                FROM
+                jokalariak
+                WHERE erabiltzailea ='".$_SESSION['erab']."'";
+        $resultado = mysqli_query( $conn, $sql );
+        $puntos_old = mysqli_result( $resultado ,0 ,'puntos' );
+        $puntos_sumar = $puntos_old;
+        for( $num = 0; $num < 2; $num++ ){
+            $respuestas = $_POST[ 'galdera'.$num ];
 
+            if($respuestas == "Respuesta correcta" ){
+                $puntos_sumar = $puntos_sumar + 1000;
+            }
+
+        }
+        $sql = "UPDATE jokalariak SET `puntuazio_max` = ".$puntos_sumar." WHERE erabiltzailea = '".$_SESSION['erab']."'";
+        mysqli_query( $conn, $sql );
+    }
+
+    //FUNCION PARA RECOGER EXCLUSIVAMENTE UN PARAMETRO DEL sql Y AGREGARLO COMO VARIABLE
+    function mysqli_result($result, $row, $field = 0) {
+        if ($result->data_seek($row)) {
+            $row = $result->fetch_array();
+            if (isset($row[$field])) {
+                return $row[$field];
             }
         }
-
+        return false;
     }
 ?>

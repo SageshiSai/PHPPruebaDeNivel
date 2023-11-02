@@ -79,7 +79,7 @@ class Login_Bista {
       muestra en pantalla la preguntas y respuestas.     */
     public function galdera_erantzunak_marraztu ($galdera_erantzunen_arraya){
                 
-        echo '<form method="POST" action="aukera_kontrolatzaia.php">';
+        echo '<form method="POST" action="aukera_kontrolatzailea.php">';
          // Galderaren etiketa sortu/ Crear la etiqueta de la pregunta
          $kont=0;
          foreach($galdera_erantzunen_arraya as $galdera => $erantzunak){
@@ -94,7 +94,6 @@ class Login_Bista {
             echo '</select><br><br>';    
             
         }
-        
         echo '<input type="submit" value="BIDALI" name="jokatu_botoia"/>';
         echo '</form>';
        

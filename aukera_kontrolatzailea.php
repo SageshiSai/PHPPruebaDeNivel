@@ -8,6 +8,9 @@ if(!isset($_SESSION[ 'erab' ])){
     header( "Location: index.php" );
     }
 }
+if( isset($_POST["jokatu_botoia"]) && $_POST["jokatu_botoia"] == "BIDALI"){
+    findOutAnswer();
+};
 ?>
 
 
@@ -19,10 +22,13 @@ if(!isset($_SESSION[ 'erab' ])){
     <title>Document</title> 
     <?php
     $loginBista = new Login_Bista();
+    var_dump($_POST);
     if( !isset($_POST[ "opcion" ]) ) {
         $loginBista->Aukera_Eman();
     } else {
+
         switch ($_POST[ 'opcion' ]) {
+
             case 'zerrenda':
                 $select_puntuaciones = getPoints();
                 $loginBista->zerrendatu($select_puntuaciones);
@@ -30,10 +36,11 @@ if(!isset($_SESSION[ 'erab' ])){
                 break;
                 
             case 'jokatu':
-                $select_puntuaciones = getQuestions();
-                $loginBista->galdera_erantzunak_marraztu();
+                $select_preguntas = getQuestions();
+                $loginBista->galdera_erantzunak_marraztu($select_preguntas);
                 $loginBista->Aukera_Eman();
                 break;
+
         }
     } 
 

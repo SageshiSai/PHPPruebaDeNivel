@@ -22,7 +22,7 @@ if( isset($_POST["jokatu_botoia"]) && $_POST["jokatu_botoia"] == "BIDALI"){
     <title>Document</title> 
     <?php
     $loginBista = new Login_Bista();
-    var_dump($_POST);
+    
     if( !isset($_POST[ "opcion" ]) ) {
         $loginBista->Aukera_Eman();
     } else {

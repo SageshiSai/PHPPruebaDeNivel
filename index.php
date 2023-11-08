@@ -1,6 +1,6 @@
 <?php
 include 'bista.php';
-    ?>
+     ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
